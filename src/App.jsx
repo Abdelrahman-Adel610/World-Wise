@@ -6,18 +6,34 @@ import Homepage from "./Pages/Homepage";
 import PageNotFound from "./Pages/PageNotFound";
 import Login from "./Pages/Login";
 import AppLayout from "./Pages/AppLayout";
+import CityList from "./Components/CityList";
+import useFetch from "./Hooks/useFetch";
+import CountryItem from "./Components/CountryItem";
+import CountriesList from "./Components/CountriesList";
+import Form from "./Components/Form";
+import City from "./Components/City";
 
 function App() {
+  const cities = useFetch("http://localhost:8000/cities");
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Homepage />}></Route>
-          <Route path="Pricing" element={<Pricing />}></Route>
-          <Route path="Product" element={<Product />}></Route>
-          <Route path="Login" element={<Login />}></Route>
-          <Route path="App" element={<AppLayout />}></Route>
-          <Route path="*" element={<PageNotFound />}></Route>
+          <Route index element={<Homepage />}></Route>
+          <Route path="Pricing" element={<Pricing />} />
+          <Route path="Product" element={<Product />} />
+          <Route path="Login" element={<Login />} />
+          <Route path="App" element={<AppLayout />}>
+            <Route index element={<CityList cities={cities} />} />
+            <Route path="cities" element={<CityList cities={cities} />} />
+            <Route path="cities/:cityId" element={<City />} />
+            <Route path="form" element={<Form />} />
+            <Route
+              path="countries"
+              element={<CountriesList cities={cities} />}
+            />
+          </Route>
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </>
