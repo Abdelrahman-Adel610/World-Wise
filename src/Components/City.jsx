@@ -1,4 +1,4 @@
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { formatDate } from "../Utilities/utilities";
 import styles from "./City.module.css";
 import useFetch from "../Hooks/useFetch";
@@ -7,12 +7,11 @@ import Button from "./Button";
 import { useCitiesContext } from "../Hooks/useCitiesContext";
 import { useEffect } from "react";
 import useMapContext from "../Hooks/useMapContext";
+import { useLocationFormURL } from "../Hooks/useLocationFormURL";
 function City() {
   const { cityId: id } = useParams();
   const { data, isLoading } = useFetch(`http://localhost:8000/cities/${id}`);
-  const [searchParams] = useSearchParams();
-  const lat = searchParams.get("lat");
-  const lng = searchParams.get("lng");
+  const { lat, lng } = useLocationFormURL();
   const navigate = useNavigate();
   const { emoji, cityName, notes, date } = data || {};
   const { setActiveCity } = useCitiesContext();

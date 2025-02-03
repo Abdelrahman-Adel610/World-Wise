@@ -4,9 +4,14 @@ import { useState } from "react";
 
 import styles from "./Form.module.css";
 import Button from "./Button";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import useFetchCity from "../Hooks/useFetchCity";
+import { useLocationFormURL } from "../Hooks/useLocationFormURL";
+import Message from "./Message";
+import Spinner from "./Spinner";
 
 export function convertToEmoji(countryCode) {
+  if (!countryCode) return;
   const codePoints = countryCode
     .toUpperCase()
     .split("")
@@ -15,24 +20,30 @@ export function convertToEmoji(countryCode) {
 }
 
 function Form() {
-  const [searchParams] = useSearchParams();
-  const lat = searchParams.get("lat");
-  const lng = searchParams.get("lng");
-  const [cityName, setCityName] = useState("");
-  const [country, setCountry] = useState("");
+  const { lat, lng } = useLocationFormURL();
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
+  const {
+    city: { countryCode, countryName, locality: cityName },
+    isLoading,
+  } = useFetchCity(
+    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
+  );
+
   const navigate = useNavigate();
+  if (isLoading) return <Spinner />;
+  if (!countryCode)
+    return <Message message={"Invalid place Please select another place"} />;
   return (
     <form className={styles.form}>
       <div className={styles.row}>
-        <label htmlFor="cityName">City name</label>
+        <label htmlFor="cityName">{cityName}</label>
         <input
           id="cityName"
-          onChange={(e) => setCityName(e.target.value)}
+          // onChange={(e) => setCityName(e.target.value)}
           value={cityName}
         />
-        {/* <span className={styles.flag}>{emoji}</span> */}
+        <span className={styles.flag}>{convertToEmoji(countryCode)}</span>
       </div>
 
       <div className={styles.row}>
