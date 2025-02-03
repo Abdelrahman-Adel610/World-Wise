@@ -5,18 +5,19 @@ import { NavLink } from "react-router-dom";
 export default function CityItem({
   city: {
     emoji,
-    notes,
     date,
-    country,
     cityName,
     id,
     position: { lat, lng },
   },
+  isActive,
 }) {
   return (
     <NavLink
       to={`/App/cities/${id}?lat=${lat}&lng=${lng}`}
-      className={styles.cityItem}
+      className={`${styles.cityItem} ${
+        isActive ? styles["cityItem--active"] : ""
+      }`}
     >
       <span className={styles.emoji}>{emoji}</span>
       <h3 className={styles.name}>{cityName}</h3>

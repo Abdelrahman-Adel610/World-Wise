@@ -1,21 +1,33 @@
-import { useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { formatDate } from "../Utilities/utilities";
 import styles from "./City.module.css";
 import useFetch from "../Hooks/useFetch";
 import Spinner from "./Spinner";
+import Button from "./Button";
+import { useCitiesContext } from "../Hooks/useCitiesContext";
+import { useEffect } from "react";
 function City() {
   const { cityId: id } = useParams();
   const { data, isLoading } = useFetch(`http://localhost:8000/cities/${id}`);
   const [searchParams, setSearchParams] = useSearchParams();
   const lat = searchParams.get("lat");
   const lng = searchParams.get("lng");
-  console.log(data);
+  const navigate = useNavigate();
   const { emoji, cityName, notes, date } = data || {};
+  const { setActiveCity } = useCitiesContext();
+  useEffect(
+    function () {
+      if (cityName && !isLoading) {
+        setActiveCity(id);
+      }
+    },
+    [cityName, id, isLoading, setActiveCity]
+  );
+
   if (isLoading) return <Spinner />;
   return (
     <div className={styles.city}>
       <div className={styles.row}>
-        <h6>City name {id}</h6>
         <h3>
           <span>{emoji}</span> {cityName}
         </h3>
@@ -44,7 +56,16 @@ function City() {
         </a>
       </div>
 
-      <div>{/* <ButtonBack /> */}</div>
+      <div>
+        <Button
+          type="back"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          &larr; Back
+        </Button>
+      </div>
     </div>
   );
 }
