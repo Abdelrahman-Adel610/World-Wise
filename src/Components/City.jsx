@@ -6,15 +6,21 @@ import Spinner from "./Spinner";
 import Button from "./Button";
 import { useCitiesContext } from "../Hooks/useCitiesContext";
 import { useEffect } from "react";
+import useMapContext from "../Hooks/useMapContext";
 function City() {
   const { cityId: id } = useParams();
   const { data, isLoading } = useFetch(`http://localhost:8000/cities/${id}`);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const lat = searchParams.get("lat");
   const lng = searchParams.get("lng");
   const navigate = useNavigate();
   const { emoji, cityName, notes, date } = data || {};
   const { setActiveCity } = useCitiesContext();
+  const { setPosition } = useMapContext();
+  useEffect(() => {
+    setPosition([lat, lng]);
+  }, [lat, lng, setPosition]);
+
   useEffect(
     function () {
       if (cityName && !isLoading) {
