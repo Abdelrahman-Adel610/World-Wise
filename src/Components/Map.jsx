@@ -11,7 +11,6 @@ export default function Map() {
   const { position, setPosition } = useMapContext();
 
   const { cities } = useCitiesContext();
-  console.log(position);
   const {
     isLoading: isLoadingUserPos,
     userPosition,
@@ -21,11 +20,15 @@ export default function Map() {
   function resetUserPosition() {
     setUserPositionState(null);
   }
-  console.log(userPosition);
   return (
     <div className={styles.mapContainer}>
       {!userPosition && (
-        <Button type="position" onClick={getMyPos}>
+        <Button
+          type="position"
+          onClick={() => {
+            getMyPos();
+          }}
+        >
           {isLoadingUserPos ? "Loading..." : "Use my Location"}
         </Button>
       )}

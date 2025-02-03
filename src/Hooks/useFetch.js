@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
-export default function useFetch(url) {
+export default function useFetch(url, notCancel = false) {
   const [data, setData] = useState(null);
   const [isLoading, setIsloading] = useState(false);
   useEffect(() => {
+    const ctrl = new AbortController();
     async function fetchCities() {
       setIsloading(true);
-      const ctrl = new AbortController();
       const req = await fetch(url, {
         method: "GET",
         signal: ctrl.signal,
@@ -14,9 +14,11 @@ export default function useFetch(url) {
       const data = await req.json();
       setData(data);
       setIsloading(false);
+    }
+    if (!notCancel) {
+      fetchCities();
       return () => ctrl.abort();
     }
-    fetchCities();
-  }, [url]);
+  }, [notCancel, url]);
   return { data, isLoading };
 }

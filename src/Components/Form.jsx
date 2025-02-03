@@ -9,7 +9,9 @@ import useFetchCity from "../Hooks/useFetchCity";
 import { useLocationFormURL } from "../Hooks/useLocationFormURL";
 import Message from "./Message";
 import Spinner from "./Spinner";
+import DatePicker from "react-datepicker";
 
+import "react-datepicker/dist/react-datepicker.css";
 export function convertToEmoji(countryCode) {
   if (!countryCode) return;
   const codePoints = countryCode
@@ -27,10 +29,13 @@ function Form() {
     city: { countryCode, countryName, locality: cityName },
     isLoading,
   } = useFetchCity(
-    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
+    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`,
+    Number.isFinite(lat)
   );
 
   const navigate = useNavigate();
+  if (Number.isFinite(lat))
+    return <Message message={"Start by clicking somewhere on the map"} />;
   if (isLoading) return <Spinner />;
   if (!countryCode)
     return <Message message={"Invalid place Please select another place"} />;
@@ -38,20 +43,17 @@ function Form() {
     <form className={styles.form}>
       <div className={styles.row}>
         <label htmlFor="cityName">{cityName}</label>
-        <input
-          id="cityName"
-          // onChange={(e) => setCityName(e.target.value)}
-          value={cityName}
-        />
+        <input id="cityName" value={cityName} disabled={true} />
         <span className={styles.flag}>{convertToEmoji(countryCode)}</span>
       </div>
 
       <div className={styles.row}>
         <label htmlFor="date">When did you go to {cityName}?</label>
-        <input
+        <DatePicker
+          selected={date}
+          onChange={(date) => setDate(date)}
           id="date"
-          onChange={(e) => setDate(e.target.value)}
-          value={date}
+          dateFormat="dd/mm/yyyy"
         />
       </div>
 

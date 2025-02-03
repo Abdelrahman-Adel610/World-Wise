@@ -17,7 +17,7 @@ function City() {
   const { setActiveCity } = useCitiesContext();
   const { setPosition } = useMapContext();
   useEffect(() => {
-    setPosition([lat, lng]);
+    if (isFinite(lat) && isFinite(lng)) setPosition([lat, lng]);
   }, [lat, lng, setPosition]);
 
   useEffect(

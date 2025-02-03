@@ -1,8 +1,13 @@
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import useMapContext from "./useMapContext";
 
 export function useLocationFormURL() {
   const [searchParams] = useSearchParams();
-  const lat = searchParams.get("lat");
-  const lng = searchParams.get("lng");
-  return { lat, lng };
+  const { position, setPosition } = useMapContext();
+
+  useEffect(() => {
+    setPosition({ lat: searchParams.get("lat"), lng: searchParams.get("lng") });
+  }, [searchParams, setPosition]);
+  return position;
 }
