@@ -1,4 +1,3 @@
-import { Outlet } from "react-router-dom";
 import Map from "../Components/Map.jsx";
 import Sidebar from "../Components/Sidebar.jsx";
 import styles from "./AppLayout.module.css";
