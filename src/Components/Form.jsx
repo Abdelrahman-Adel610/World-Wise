@@ -34,7 +34,7 @@ function Form() {
     `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`,
     !Number.isFinite(lat)
   );
-  const { AddCity, isCreating } = useCitiesContext();
+  const { AddCity, isLoading: isAdding } = useCitiesContext();
   async function handleSubmit(e) {
     e.preventDefault();
     if (!cityName || !date || !notes) return;
@@ -62,7 +62,7 @@ function Form() {
     return <Message message={"Invalid place Please select another place"} />;
   return (
     <form
-      className={`${styles.form} ${isCreating ? styles.loading : ""}`}
+      className={`${styles.form} ${isAdding ? styles.loading : ""}`}
       onSubmit={handleSubmit}
     >
       <div className={styles.row}>

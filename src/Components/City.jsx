@@ -26,7 +26,7 @@ function City() {
         setActiveCity(id);
       }
     },
-    [cityName, id, isLoading, setActiveCity]
+    [id, cityName]
   );
 
   if (isLoading) return <Spinner />;

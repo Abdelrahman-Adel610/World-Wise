@@ -14,7 +14,6 @@ export function useGeolocation(navigate) {
         navigate(`form?lat=${+e.coords.latitude}&lng=${+e.coords.longitude}`);
       }
     });
-
     setUserPositionState(true);
     setIsloading(false);
   }

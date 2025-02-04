@@ -25,15 +25,39 @@
       }
     },
     {
-      "id": "a1f7",
-      "cityName": "Nuwaybi‘a",
-      "country": "Egypt",
-      "emoj": "EG",
-      "date": "2025-02-04T00:44:57.995Z",
-      "notes": "FF",
+      "id": "7340",
+      "cityName": "Gao",
+      "country": "Mali",
+      "emoj": "ML",
+      "date": "2025-02-04T21:46:22.686Z",
+      "notes": "fff",
       "position": {
-        "lat": "27.488781168937997",
-        "lng": "33.48632812500001"
+        "lat": 16.277960306212524,
+        "lng": -0.6811523437500001
+      }
+    },
+    {
+      "id": "3a07",
+      "cityName": "Diema",
+      "country": "Mali",
+      "emoj": "ML",
+      "date": "2025-02-04T21:46:27.893Z",
+      "notes": "dfdf",
+      "position": {
+        "lat": 14.689881366618774,
+        "lng": -8.986816406250002
+      }
+    },
+    {
+      "id": "d904",
+      "cityName": "Moudjeria",
+      "country": "Mauritania",
+      "emoj": "MR",
+      "date": "2025-02-04T21:57:16.165Z",
+      "notes": "dasd",
+      "position": {
+        "lat": 17.476432197195518,
+        "lng": -12.1728515625
       }
     }
   ]
