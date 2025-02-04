@@ -24,6 +24,7 @@ export function convertToEmoji(countryCode) {
 
 function Form() {
   const { lat, lng } = useLocationFormURL();
+
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
   const {
@@ -31,7 +32,7 @@ function Form() {
     isLoading,
   } = useFetchCity(
     `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`,
-    Number.isFinite(lat)
+    !Number.isFinite(lat)
   );
   const { AddCity, isCreating } = useCitiesContext();
   async function handleSubmit(e) {
@@ -53,7 +54,8 @@ function Form() {
   }
 
   const navigate = useNavigate();
-  if (Number.isFinite(lat))
+
+  if (!lat && !lng)
     return <Message message={"Start by clicking somewhere on the map"} />;
   if (isLoading) return <Spinner />;
   if (!countryCode)

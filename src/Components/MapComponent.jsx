@@ -8,7 +8,7 @@ export default function MapComponent({ resetUserPosition }) {
   const navigate = useNavigate();
   const { position } = useMapContext();
   useEffect(() => {
-    map.flyTo(position, 6);
+    if (position.lat && position.lng) map.flyTo(position, 6);
   }, [position, map]);
   useEffect(() => {
     map.addEventListener("click", (e) => {

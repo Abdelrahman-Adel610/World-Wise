@@ -8,15 +8,16 @@ import MapComponent from "./MapComponent";
 import Button from "./Button";
 import { useGeolocation } from "../Hooks/useGeolocation";
 export default function Map() {
-  const { position, setPosition } = useMapContext();
+  const { position } = useMapContext();
 
   const { cities } = useCitiesContext();
+  const navigate = useNavigate();
   const {
     isLoading: isLoadingUserPos,
     userPosition,
     getMyPos,
     setUserPositionState,
-  } = useGeolocation(setPosition);
+  } = useGeolocation(navigate);
   function resetUserPosition() {
     setUserPositionState(null);
   }
@@ -34,7 +35,7 @@ export default function Map() {
       )}
       <MapContainer
         center={position}
-        zoom={10}
+        zoom={6}
         scrollWheelZoom={true}
         style={{ height: "100%" }}
       >

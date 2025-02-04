@@ -7,7 +7,10 @@ export function useLocationFormURL() {
   const { position, setPosition } = useMapContext();
 
   useEffect(() => {
-    setPosition({ lat: searchParams.get("lat"), lng: searchParams.get("lng") });
+    setPosition({
+      lat: +searchParams.get("lat"),
+      lng: +searchParams.get("lng"),
+    });
   }, [searchParams, setPosition]);
   return position;
 }
