@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import Styles from "./NavItems.module.css";
+import { useAuthContext } from "../context/FakeAuthContext";
 export default function NavItems() {
+  const { isAuthorized } = useAuthContext();
   return (
     <ul>
       <li>
@@ -9,11 +11,13 @@ export default function NavItems() {
       <li>
         <NavLink to="/Pricing">Pricing</NavLink>
       </li>
-      <li>
-        <NavLink className={Styles.ctaLink} to="/Login">
-          Login
-        </NavLink>
-      </li>
+      {!isAuthorized && (
+        <li>
+          <NavLink className={Styles.ctaLink} to="/Login">
+            Login
+          </NavLink>
+        </li>
+      )}
     </ul>
   );
 }

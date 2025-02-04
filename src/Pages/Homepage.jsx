@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Homepage.module.css";
 import PageNav from "../Components/PageNav";
+import { useAuthContext } from "../context/FakeAuthContext";
 export default function Homepage() {
+  const { isAuthorized } = useAuthContext();
   return (
     <main className={styles.homepage}>
       <PageNav />
@@ -16,7 +18,7 @@ export default function Homepage() {
           of. Never forget your wonderful experiences, and show your friends how
           you have wandered the world.
         </h2>
-        <NavLink to="./App" className="cta">
+        <NavLink to={isAuthorized ? "./App" : "./Login"} className="cta">
           START TRACKING NOW
         </NavLink>
       </section>
