@@ -1,52 +1,40 @@
 {
   "cities": [
     {
-      "cityName": "Lisbon",
-      "country": "Portugal",
-      "emoji": "🇵🇹",
-      "date": "2027-10-31T15:59:59.138Z",
-      "notes": "My favorite city so far!",
+      "id": "f384",
+      "cityName": "Giza",
+      "country": "Egypt",
+      "emoj": "EG",
+      "date": "2025-02-04T00:10:24.890Z",
+      "notes": "fdfa",
       "position": {
-        "lat": 38.727881642324164,
-        "lng": -9.140900099907554
-      },
-      "id": 73930385
+        "lat": "16.615137799987075",
+        "lng": "7.294921875000001"
+      }
     },
     {
-      "cityName": "Madrid",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2027-07-15T08:22:53.976Z",
-      "notes": "",
+      "id": "ef77",
+      "cityName": "Tobruk",
+      "country": "Libya",
+      "emoj": "LY",
+      "date": "2025-02-04T00:14:06.928Z",
+      "notes": "SSSSSSSSSSSSSS",
       "position": {
-        "lat": 40.46635901755316,
-        "lng": -3.7133789062500004
-      },
-      "id": 17806751
+        "lat": "27.644606381943326",
+        "lng": "16.984863281250004"
+      }
     },
     {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
+      "id": "a1f7",
+      "cityName": "Nuwaybi‘a",
+      "country": "Egypt",
+      "emoj": "EG",
+      "date": "2025-02-04T00:44:57.995Z",
+      "notes": "FF",
       "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
-      },
-      "id": 98443197
-    },
-    {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
-      "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
-      },
-      "id": 9844345197
+        "lat": "27.488781168937997",
+        "lng": "33.48632812500001"
+      }
     }
   ]
 }

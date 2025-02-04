@@ -11,18 +11,29 @@ export default function CityItem({
     position: { lat, lng },
   },
   isActive,
+  ondelete,
 }) {
   return (
-    <NavLink
-      to={`/App/cities/${id}?lat=${lat}&lng=${lng}`}
-      className={`${styles.cityItem} ${
-        isActive ? styles["cityItem--active"] : ""
-      }`}
-    >
-      <span className={styles.emoji}>{emoji}</span>
-      <h3 className={styles.name}>{cityName}</h3>
-      <time className={styles.date}>( {formatDate(date)} )</time>
-      <button className={styles.deleteBtn}>&times;</button>
-    </NavLink>
+    <>
+      <NavLink
+        className={`${styles.cityItem} ${
+          isActive ? styles["cityItem--active"] : ""
+        }`}
+        to={`/App/cities/${id}?lat=${lat}&lng=${lng}`}
+      >
+        <span className={styles.emoji}>{emoji}</span>
+        <h3 className={styles.name}>{cityName}</h3>
+        <time className={styles.date}>( {formatDate(date)} )</time>
+        <button
+          className={styles.deleteBtn}
+          onClick={(e) => {
+            e.preventDefault();
+            ondelete();
+          }}
+        >
+          &times;
+        </button>
+      </NavLink>
+    </>
   );
 }

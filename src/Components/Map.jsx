@@ -50,7 +50,7 @@ export default function Map() {
             key={city.id}
           />
         ))}
-        <MapMarker position={position} />
+        <MapMarker position={position} Message={"Selected position"} />
       </MapContainer>
     </div>
   );

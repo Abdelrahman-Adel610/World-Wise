@@ -5,7 +5,7 @@ import { useCitiesContext } from "../Hooks/useCitiesContext";
 import Spinner from "./Spinner";
 export default function CityList() {
   const { activeCity } = useCitiesContext();
-  const { cities, isLoading } = useCitiesContext();
+  const { cities, isLoading, deleteCity } = useCitiesContext();
 
   if (isLoading) return <Spinner />;
   if (!cities?.length)
@@ -24,6 +24,7 @@ export default function CityList() {
             city={city}
             key={city.id}
             isActive={activeCity == city.id}
+            ondelete={() => deleteCity(city.id)}
           />
         );
       })}

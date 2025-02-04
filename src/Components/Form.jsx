@@ -12,6 +12,7 @@ import Spinner from "./Spinner";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import { useCitiesContext } from "../Hooks/useCitiesContext";
 export function convertToEmoji(countryCode) {
   if (!countryCode) return;
   const codePoints = countryCode
@@ -32,6 +33,24 @@ function Form() {
     `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`,
     Number.isFinite(lat)
   );
+  const { AddCity, isCreating } = useCitiesContext();
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!cityName || !date || !notes) return;
+    const newCity = {
+      cityName: cityName,
+      country: countryName,
+      emoj: countryCode,
+      date,
+      notes,
+      position: {
+        lat,
+        lng,
+      },
+    };
+    await AddCity(newCity);
+    navigate("/App/cities");
+  }
 
   const navigate = useNavigate();
   if (Number.isFinite(lat))
@@ -40,7 +59,10 @@ function Form() {
   if (!countryCode)
     return <Message message={"Invalid place Please select another place"} />;
   return (
-    <form className={styles.form}>
+    <form
+      className={`${styles.form} ${isCreating ? styles.loading : ""}`}
+      onSubmit={handleSubmit}
+    >
       <div className={styles.row}>
         <label htmlFor="cityName">{cityName}</label>
         <input id="cityName" value={cityName} disabled={true} />
