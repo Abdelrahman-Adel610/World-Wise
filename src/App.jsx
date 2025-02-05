@@ -13,6 +13,7 @@ import Form from "./Components/Form";
 import City from "./Components/City";
 import { CitiesProvider } from "./context/CitiesContext";
 import { FakeAuthProvider } from "./context/FakeAuthContext";
+import ProtectedRoute from "./Components/ProtectedRoute";
 
 function App() {
   return (
@@ -28,7 +29,9 @@ function App() {
               path="App"
               element={
                 <CitiesProvider>
-                  <AppLayout />
+                  <ProtectedRoute>
+                    <AppLayout />
+                  </ProtectedRoute>
                 </CitiesProvider>
               }
             >
