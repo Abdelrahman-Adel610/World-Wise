@@ -37,27 +37,15 @@
       }
     },
     {
-      "id": "3a07",
-      "cityName": "Diema",
-      "country": "Mali",
-      "emoj": "ML",
-      "date": "2025-02-04T21:46:27.893Z",
-      "notes": "dfdf",
+      "id": "36a0",
+      "cityName": "New Cairo",
+      "country": "Egypt",
+      "emoj": "EG",
+      "date": "2025-02-05T00:22:33.481Z",
+      "notes": "It was a nice trip 😊😊",
       "position": {
-        "lat": 14.689881366618774,
-        "lng": -8.986816406250002
-      }
-    },
-    {
-      "id": "d904",
-      "cityName": "Moudjeria",
-      "country": "Mauritania",
-      "emoj": "MR",
-      "date": "2025-02-04T21:57:16.165Z",
-      "notes": "dasd",
-      "position": {
-        "lat": 17.476432197195518,
-        "lng": -12.1728515625
+        "lat": 30.035811042667792,
+        "lng": 31.54037475585938
       }
     }
   ]
