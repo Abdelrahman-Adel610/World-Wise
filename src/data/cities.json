@@ -1,51 +1,39 @@
 {
   "cities": [
     {
-      "id": "f384",
-      "cityName": "Giza",
-      "country": "Egypt",
-      "emoj": "EG",
-      "date": "2025-02-04T00:10:24.890Z",
-      "notes": "fdfa",
-      "position": {
-        "lat": "16.615137799987075",
-        "lng": "7.294921875000001"
-      }
-    },
-    {
-      "id": "ef77",
+      "id": "6828",
       "cityName": "Tobruk",
       "country": "Libya",
       "emoj": "LY",
-      "date": "2025-02-04T00:14:06.928Z",
-      "notes": "SSSSSSSSSSSSSS",
+      "date": "2025-02-06T21:55:03.566Z",
+      "notes": "da",
       "position": {
-        "lat": "27.644606381943326",
-        "lng": "16.984863281250004"
+        "lat": 28.935695799340902,
+        "lng": 23.928222656250004
       }
     },
     {
-      "id": "7340",
-      "cityName": "Gao",
-      "country": "Mali",
-      "emoj": "ML",
-      "date": "2025-02-04T21:46:22.686Z",
-      "notes": "fff",
+      "id": "f750",
+      "cityName": "Ajdabiya",
+      "country": "Libya",
+      "emoj": "LY",
+      "date": "2025-02-06T22:07:02.337Z",
+      "notes": "fd",
       "position": {
-        "lat": 16.277960306212524,
-        "lng": -0.6811523437500001
+        "lat": 28.08637552579304,
+        "lng": 20.67761011996612
       }
     },
     {
-      "id": "36a0",
-      "cityName": "New Cairo",
-      "country": "Egypt",
-      "emoj": "EG",
-      "date": "2025-02-05T00:22:33.481Z",
-      "notes": "It was a nice trip 😊😊",
+      "id": "d912",
+      "cityName": "Hun",
+      "country": "Libya",
+      "emoj": "LY",
+      "date": "2025-02-06T22:15:50.624Z",
+      "notes": "fda",
       "position": {
-        "lat": 30.035811042667792,
-        "lng": 31.54037475585938
+        "lat": 27.969905251748,
+        "lng": 18.215332031250004
       }
     }
   ]

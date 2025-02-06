@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useCallback, useEffect, useReducer } from "react";
 
 export const CitiesContext = createContext();
 const initialState = {
@@ -39,9 +39,9 @@ export function CitiesProvider({ children }) {
     reducer,
     initialState
   );
-  function setActiveCity(id) {
+  const setActiveCity = useCallback(function setActiveCity(id) {
     dispatch({ type: "setActive", payload: id });
-  }
+  }, []);
   useEffect(() => {
     const ctrl = new AbortController();
     async function fetchCities() {

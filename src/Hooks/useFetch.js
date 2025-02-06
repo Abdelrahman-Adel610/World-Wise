@@ -21,6 +21,6 @@ export default function useFetch(url, cancel = false) {
       fetchCities();
       return () => ctrl.abort();
     }
-  }, [url]);
+  }, [cancel, url]);
   return { data, isLoading, setData };
 }

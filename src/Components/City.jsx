@@ -22,11 +22,11 @@ function City() {
 
   useEffect(
     function () {
-      if (cityName && !isLoading) {
+      if (id) {
         setActiveCity(id);
       }
     },
-    [id, cityName]
+    [id, setActiveCity]
   );
 
   if (isLoading) return <Spinner />;
